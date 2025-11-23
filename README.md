@@ -1,1 +1,1 @@
-math-paradox
+Full README with documentation in Ukrainian about the math paradoxes project
