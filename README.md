@@ -18,7 +18,7 @@
 ## Технічний стек
 
 - **Backend**: PHP 8.2
-- **База даних**: MongoDB 7.x
+- **База даних**: MongoDB 4.4
 - **Веб-сервер**: Apache
 - **Архітектура**: MVC патерн
 - **Контейнеризація**: Docker + Docker Compose
@@ -175,14 +175,14 @@ docker-compose logs -f mongodb
 docker-compose exec web bash
 
 # MongoDB
-docker-compose exec mongodb mongosh
+docker-compose exec mongodb mongo
 ```
 
 ### Повторна ініціалізація бази даних
 
 ```bash
 # Видалити дані
-docker-compose exec mongodb mongosh math_paradoxes --eval "db.dropDatabase()"
+docker-compose exec mongodb mongo math_paradoxes --eval "db.dropDatabase()"
 
 # Знову запустити seed скрипт
 docker-compose exec web php seed.php
