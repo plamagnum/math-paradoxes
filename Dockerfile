@@ -5,9 +5,15 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     libcurl4-openssl-dev \
     pkg-config \
+    libzip-dev \
+    zip \
+    unzip \
     && rm -rf /var/lib/apt/lists/*
 
-# Install MongoDB extension
+# Install PHP extensions
+RUN docker-php-ext-install zip
+
+# Install MongoDB extension (try without channel update)
 RUN pecl install mongodb \
     && docker-php-ext-enable mongodb
 
