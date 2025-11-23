@@ -77,14 +77,9 @@ class Paradox {
     }
 
     public function count() {
-        $command = new MongoDB\Driver\Command([
-            'count' => $this->collection
-        ]);
-        
         try {
-            $cursor = $this->db->executeCommand($command);
-            $result = current($cursor->toArray());
-            return $result->n ?? 0;
+            $cursor = $this->db->executeQuery($this->collection, []);
+            return count(iterator_to_array($cursor));
         } catch (Exception $e) {
             return 0;
         }

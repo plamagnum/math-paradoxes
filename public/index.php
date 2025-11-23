@@ -21,7 +21,7 @@ if ($uri === '') {
 if ($uri === '/') {
     $controller = new HomeController();
     $controller->index();
-} elseif (preg_match('/^\/paradox\/([a-f0-9]{24})$/', $uri, $matches)) {
+} elseif (preg_match('/^\/paradox\/([a-fA-F0-9]{24})$/', $uri, $matches)) {
     $controller = new ParadoxController();
     $controller->show($matches[1]);
 } elseif ($uri === '/admin' || $uri === '/admin/login') {
@@ -39,10 +39,10 @@ if ($uri === '/') {
 } elseif ($uri === '/admin/paradoxes/create') {
     $controller = new AdminParadoxController();
     $controller->create();
-} elseif (preg_match('/^\/admin\/paradoxes\/edit\/([a-f0-9]{24})$/', $uri, $matches)) {
+} elseif (preg_match('/^\/admin\/paradoxes\/edit\/([a-fA-F0-9]{24})$/', $uri, $matches)) {
     $controller = new AdminParadoxController();
     $controller->edit($matches[1]);
-} elseif (preg_match('/^\/admin\/paradoxes\/delete\/([a-f0-9]{24})$/', $uri, $matches)) {
+} elseif (preg_match('/^\/admin\/paradoxes\/delete\/([a-fA-F0-9]{24})$/', $uri, $matches)) {
     $controller = new AdminParadoxController();
     $controller->delete($matches[1]);
 } elseif ($uri === '/admin/users') {
@@ -51,10 +51,10 @@ if ($uri === '/') {
 } elseif ($uri === '/admin/users/create') {
     $controller = new AdminUserController();
     $controller->create();
-} elseif (preg_match('/^\/admin\/users\/edit\/([a-f0-9]{24})$/', $uri, $matches)) {
+} elseif (preg_match('/^\/admin\/users\/edit\/([a-fA-F0-9]{24})$/', $uri, $matches)) {
     $controller = new AdminUserController();
     $controller->edit($matches[1]);
-} elseif (preg_match('/^\/admin\/users\/delete\/([a-f0-9]{24})$/', $uri, $matches)) {
+} elseif (preg_match('/^\/admin\/users\/delete\/([a-fA-F0-9]{24})$/', $uri, $matches)) {
     $controller = new AdminUserController();
     $controller->delete($matches[1]);
 } else {
