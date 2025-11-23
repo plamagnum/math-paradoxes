@@ -1,0 +1,26 @@
+# Vendor directories
+vendor/
+
+# Logs
+logs/
+*.log
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+
+# Docker volumes
+data/
+
+# Temporary files
+tmp/
+temp/
