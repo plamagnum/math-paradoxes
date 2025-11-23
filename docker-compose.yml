@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  php:
+    build: .
+    container_name: math_paradoxes_php
+    volumes:
+      - ./:/var/www/html
+    depends_on:
+      - mongodb
+    environment:
+      MONGODB_HOST: mongodb
+      MONGODB_PORT: 27017
+      MONGODB_DATABASE: math_paradoxes
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: math_paradoxes_nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+    networks:
+      - app-network
+
+  mongodb:
+    image: mongo:7.0
+    container_name: math_paradoxes_mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: math_paradoxes
+    networks:
+      - app-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  app-network:
+    driver: bridge
